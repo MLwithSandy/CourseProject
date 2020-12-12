@@ -26,7 +26,9 @@ def load_webdriver():
         driver = webdriver.Chrome(chrome_options=options)
     else:
         options = Options()
-        options.headless = True
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless')
+        options.add_argument("--disable-dev-shm-usage")
         driver = webdriver.Chrome(filePath / 'chromedriver', options=options)
     return driver
 
@@ -34,7 +36,7 @@ def load_webdriver():
 # read web document using beutifulsoup
 def get_js_soup(url_web, driver):
     driver.get(url_web)
-    time.sleep(5)
+    time.sleep(1)
 
     redirected_url = driver.current_url
 
@@ -45,12 +47,12 @@ def get_js_soup(url_web, driver):
 
         if new_url.find('NASDAQ/price-target/') == -1:
             driver.get(url_web)
+            time.sleep(1)
         else:
             return
     else:
         print("URL for Analysts rating: " + redirected_url)
 
-    time.sleep(5)
     res_html = driver.execute_script('return document.body.innerHTML')
     soup_obj = BeautifulSoup(res_html, 'html.parser')  # beautiful soup object to be used for parsing html content
     # print(soup_obj)
@@ -139,20 +141,26 @@ def ratings_assignment(average_rating):
 # calculate overall rating
 
 def calculate_overall_ratings(df_calc):
-    # df_temp = df_calc.copy();
+    # df_calc = df_temp.copy();
 
     # scale ratings from various analysts on scale of {-1, 0, 1}
     df_calc['newRatings'] = df_calc['ratingAssigned'].map(lambda x: scale_ratings(x))
 
-    # average rating
-    average_rating = round(df_calc['newRatings'].mean(), 0)
+    # overall rating by voting
+    sum_ratings = df_calc['newRatings'].sum()
+    overall_rating_scaled = 0
+
+    if sum_ratings > 0:
+        overall_rating_scaled = 1
+    if sum_ratings < 0:
+        overall_rating_scaled = -1
 
     df_calc['scaledRatings'] = df_calc['newRatings'].map(lambda x: ratings_assignment(x))
 
-    df_calc.drop(columns=['newRatings'])
+    # df_calc.drop(columns=['newRatings'])
 
-    # rating assignment
-    overall_ratings = ratings_assignment(average_rating)
+    # rating assignment to BUY, SELL or HOLD
+    overall_ratings = ratings_assignment(overall_rating_scaled)
     return overall_ratings
 
 
@@ -352,4 +360,3 @@ if __name__ == '__main__':
     market = "NASDAQ"
     stock_symbol = "AAPL"
     main(market, stock_symbol)
-
