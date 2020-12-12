@@ -23,6 +23,10 @@ https://github.com/MLwithSandy/CourseProject/blob/main/ProjectReport_StockRecomm
 
 https://mediaspace.illinois.edu/media/1_zbfjmw9g
 
+### Presentation - Powerpoint
+
+https://github.com/MLwithSandy/CourseProject/blob/main/StockRecommendationEngine_V1.3.pptx
+
 ### Technical Set-up Guide
 
 https://github.com/MLwithSandy/CourseProject/blob/main/Technical_set-up_guide.pdf
