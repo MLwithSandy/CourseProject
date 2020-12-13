@@ -6,12 +6,12 @@
 ## Team Members
 
     |--|---------------|----------|---------------------|
-    |# | Name          | Net ID   | Email Id            |
-    |--|---------------|----------|---------------------|
-    |1.| Ezra Schroeder| ezras2   | ezras2@illinois.edu |
-    |2.| Rasbihari Pal | pal9     | pal9@illinois.edu   | 
-    |3.| Sandeep Kumar | kumar64  | kumar64@illinois.edu|
-    |--|---------------|----------|---------------------|
+    | #   | Name            | Net ID     | Email Id              |
+    | --- | --------------- | ---------- | --------------------- |
+    | 1.  | Ezra Schroeder  | ezras2     | ezras2@illinois.edu   |
+    | 2.  | Rasbihari Pal   | pal9       | pal9@illinois.edu     |
+    | 3.  | Sandeep Kumar   | kumar64    | kumar64@illinois.edu  |
+    | --  | --------------- | ---------- | --------------------- |
 
 ## Project Documentation
 
@@ -19,11 +19,11 @@
 
 https://github.com/MLwithSandy/CourseProject/blob/main/ProjectReport_StockRecommenderSystem.pdf
         
-### Presentation - Zoom Video Recording
+### Software usage tutorial presentation video
 
 https://mediaspace.illinois.edu/media/1_zbfjmw9g
 
-### Presentation - Powerpoint
+### Project Presentation - Powerpoint
 
 https://github.com/MLwithSandy/CourseProject/blob/main/StockRecommendationEngine_V1.3.pptx
 
